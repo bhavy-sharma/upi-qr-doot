@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "UPI QR Doot",
+  "version": "1.0",
+  "description": "Apna UPI ID daalo, QR code banao — seedha payment ke liye!",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "UPI QR Doot"
+  },
+  "permissions": [],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
