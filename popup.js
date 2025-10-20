@@ -15,11 +15,12 @@ let qrInstance = null;
 
 function showMessage(msg) {
   messageBox.textContent = msg;
-  messageBox.classList.remove('hidden');
-  qrContainer.classList.add('hidden');
+  messageBox.style.display = 'block'; // show
+  qrContainer.style.display = 'none'; // hide
 }
+
 function hideMessage() {
-  messageBox.classList.add('hidden');
+  messageBox.style.display = 'none'; // hide
 }
 
 function isValidVpa(vpa) {
@@ -55,7 +56,9 @@ function generateQRCode() {
   upiLinkDisplay.textContent = upiLink;
 
   try {
-    if (qrInstance) qrInstance.clear();
+    if (qrInstance) {
+      qrInstance.clear();
+    }
     qrInstance = new QRCode(qrcodeDiv, {
       text: upiLink,
       width: 220,
@@ -64,7 +67,7 @@ function generateQRCode() {
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.H
     });
-    qrContainer.classList.remove('hidden');
+    qrContainer.style.display = 'flex'; // show QR
   } catch (err) {
     console.error('QR error', err);
     showMessage('QR banana fail ho gaya!');
@@ -72,6 +75,7 @@ function generateQRCode() {
 }
 
 generateBtn.addEventListener('click', generateQRCode);
+
 [vpaInput, amountInput].forEach(inp => {
   inp.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') generateQRCode();
